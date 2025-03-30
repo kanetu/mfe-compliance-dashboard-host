@@ -1,12 +1,17 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const remoteConfig = require("./remoteConfig");
+const path = require("path");
+const dotenv = require("dotenv").config({
+  path: path.join(__dirname, "./.env"),
+});
 
 module.exports = {
   entry: "./src/index.ts",
   mode: "development",
   devServer: {
-    port: 3000,
+    port: dotenv.parsed.REACT_APP_HOST_PORT,
   },
   output: {
     publicPath: "auto",
@@ -31,10 +36,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "host",
       remotes: {
-        taskOverview: "taskOverview@http://localhost:3001/remoteEntry.js",
-        complianceStatus:
-          "complianceStatus@http://localhost:3002/remoteEntry.js",
-        recentActivity: "recentActivity@http://localhost:3003/remoteEntry.js",
+        taskOverview: `${remoteConfig.remotes.taskOverview.scope}@${remoteConfig.remotes.taskOverview.url}`,
+        complianceStatus: `${remoteConfig.remotes.complianceStatus.scope}@${remoteConfig.remotes.complianceStatus.url}`,
+        recentActivity: `${remoteConfig.remotes.recentActivity.scope}@${remoteConfig.remotes.recentActivity.url}`,
       },
       shared: {
         react: { singleton: true, requiredVersion: "^19.1.0", eager: false },

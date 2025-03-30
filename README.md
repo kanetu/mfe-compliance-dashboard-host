@@ -20,7 +20,7 @@ This is the host application for the Compliance Dashboard, built using React and
 3.  **Start the development server:**
 
     ```bash
-    npm start
+    npm run dev
     ```
 
     The application will be available at `http://localhost:3000`.
@@ -35,6 +35,7 @@ This is the host application for the Compliance Dashboard, built using React and
   - `types/`: Contains TypeScript type definitions.
   - `utils/`: Contains utility functions.
   - `styles/`: Contains CSS styles (including Tailwind CSS directives).
+  - `remoteConfig.js`: Contains remote app configuration.
 - `public/`: Contains the `index.html` file.
 - `webpack.config.js`: Webpack configuration for the module.
 
