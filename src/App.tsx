@@ -1,8 +1,9 @@
 import React, { lazy, Suspense } from "react";
+import "./styles/index.css";
 
 const TaskOverview = lazy(() => import("taskOverview/TaskOverview"));
-const ComplianceStatus = lazy(() =>
-  import("complianceStatus/ComplianceStatus")
+const ComplianceStatus = lazy(
+  () => import("complianceStatus/ComplianceStatus")
 );
 const RecentActivity = lazy(() => import("recentActivity/RecentActivity"));
 
