@@ -7,10 +7,10 @@ const ComplianceStatus = lazy(
 );
 const RecentActivity = lazy(() => import("recentActivity/RecentActivity"));
 
-function App() {
+const App = () => {
   return (
     <div>
-      <h1>Compliance Dashboard</h1>
+      <h1 className="text-[12px]">Compliance Dashboard</h1>
       <Suspense fallback={<div>Loading...</div>}>
         <TaskOverview />
         <ComplianceStatus />
@@ -18,6 +18,6 @@ function App() {
       </Suspense>
     </div>
   );
-}
+};
 
 export default App;
